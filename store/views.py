@@ -1,8 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.contrib.auth.forms import UserCreationForm
 import json
 import datetime
+
 from .models import * 
+from .forms import OrderForm, CreateUserForm
+
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+#from .filters import OrderFilter
 
 def store(request):
 
@@ -29,13 +36,46 @@ def cart(request):
 		items = order.orderitem_set.all()
 		cartItems = order.get_cart_items
 	else:
-		#Create empty cart for now for non-logged in user
+		#Create empty c'art for now for non-logged in user
 		items = []
 		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
 		cartItems = order['get_cart_items']
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/cart.html', context)
+
+def loginPage(request):
+
+	if request.method == 'POST':
+		username = request.POST.get('username')
+		password = request.POST.get('password')
+
+		user = authenticate(request, username=username, password=password)
+		if user is not None:
+			login(request, user)
+			return redirect('store')
+		else:
+			messages.info(request, 'username or password is incorrect')
+			return render(request, 'store/login.html', context)
+	context = {}
+	return render(request, 'store/login.html', context)
+
+def logoutUser(request):
+	logout(request)
+	return redirect('store')
+
+def registerPage(request):
+	form = CreateUserForm()
+	
+	if request.method == "POST":
+		form = CreateUserForm(request.POST)
+		if form.is_valid():
+			form.save()
+			user = form.cleaned_data.get('username')
+			messages.success(request, 'account was created for ' + user)
+			return redirect('login')
+	context = {'form':form}
+	return render(request, 'store/register.html', context)
 
 def checkout(request):
 	if request.user.is_authenticated:
