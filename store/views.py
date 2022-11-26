@@ -56,13 +56,12 @@ def loginPage(request):
 			return redirect('store')
 		else:
 			messages.info(request, 'username or password is incorrect')
-			return render(request, 'store/login.html', context)
 	context = {}
 	return render(request, 'store/login.html', context)
 
 def logoutUser(request):
 	logout(request)
-	return redirect('store')
+	return redirect('main')
 
 def registerPage(request):
 	form = CreateUserForm()
