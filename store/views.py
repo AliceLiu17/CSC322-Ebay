@@ -66,7 +66,6 @@ def logoutUser(request):
 
 def registerPage(request):
 	form = CreateUserForm()
-	
 	if request.method == "POST":
 		form = CreateUserForm(request.POST)
 		if form.is_valid():
