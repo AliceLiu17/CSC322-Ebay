@@ -50,9 +50,10 @@ def loginPage(request):
 		username = request.POST.get('username')
 		password = request.POST.get('password')
 
-		user = authenticate(request, username=username, password=password)
-		if user is not None:
-			login(request, user)
+		# the user can login as long as we approve them as a "customer"
+		Customer = authenticate(request, username=username, password=password)
+		if Customer is not None:
+			login(request, Customer)
 			return redirect('store')
 		else:
 			messages.info(request, 'username or password is incorrect')
