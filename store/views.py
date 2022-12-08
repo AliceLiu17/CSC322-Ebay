@@ -51,12 +51,20 @@ def loginPage(request):
 		password = request.POST.get('password')
 
 		# the user can login as long as we approve them as a "customer"
-		Customer = authenticate(request, username=username, password=password)
-		if Customer is not None:
-			login(request, Customer)
-			return redirect('store')
+		user = authenticate(request, username=username, password=password)
+		if user is not None:
+			login(request, user)
+			#return redirect('store')
+			if user.username == 'user1':
+				return redirect('http://127.0.0.1:8000/register/') # CHANGE TO PATH TO BUYER ACCOUNT, i just have holders to make sure it works
+			elif user.username == 'user2':
+				return redirect('http://127.0.0.1:8000/login/')	# CHANGE TO PATH OF SELLER ACCOUNT
+			elif user.username == 'admin1':
+				return redirect('http://127.0.0.1:8000/') # for admins page 
 		else:
 			messages.info(request, 'username or password is incorrect')
+		
+
 	context = {}
 	return render(request, 'store/login.html', context)
 
