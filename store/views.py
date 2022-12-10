@@ -99,6 +99,10 @@ def checkout(request):
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/checkout.html', context)
 
+def complaints(request):
+	if request.method == "GET":
+		return render (request, 'store/complaints.html')
+
 def updateItem(request):
 	data = json.loads(request.body)
 	productId = data['productId']
