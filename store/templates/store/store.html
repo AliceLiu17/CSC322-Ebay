@@ -1,7 +1,9 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-	<div class="row">
+
+{% comment %} buyer page {% endcomment %}
+	{% comment %} <div class="row">
 		{% for product in products %}
 		<div class="col-lg-4">
 			<img class="thumbnail" src="{{product.imageURL}}">
@@ -10,7 +12,57 @@
 				<hr>
 
 				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-				<a class="btn btn-outline-success" href="#">View</a>
+				<a class="btn btn-outline-success" href="#">Bid this Item</a>
+				<h4 style="display: inline-block; float: right"><strong>${{product.price}}</strong></h4>
+
+			</div>
+		</div>
+		{% endfor %}
+	</div> {% endcomment %}
+
+{% comment %} seller {% endcomment %}
+	  <!-- Button trigger modal -->
+{% comment %}
+	<p align="right">
+		<input type="button" value="Sell Item" data-toggle="modal" data-target="#exampleModal"/> </p>
+	  
+	  <!-- Modal -->
+	  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Sell Item</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<form action="/">
+					<input type="text" name="title" id="title" placeholder="title of item" required/><br><br>
+					<input type="text" name="keywords" id="keywords" placeholder="keywords of item" required/><br><br>
+					<input type="number" id="price-limit" placeholder="price limit" required/><br><br>
+					<input type="text" name="title" id="title" placeholder="title" required/><br><br>
+					<form action="/action_page.php">
+						<input type="file" id="myFile" name="filename">
+					  </form>
+				  </form>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	<div class="row">
+		{% for product in products %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{product.imageURL}}">
+			<div class="box-element product">
+				<h6><strong>{{product.name}}</strong></h6>
+				<hr>
+
+				<a class="btn btn-outline-success" href="#">View Biddings</a>
 				<h4 style="display: inline-block; float: right"><strong>${{product.price}}</strong></h4>
 
 			</div>
@@ -18,4 +70,64 @@
 		{% endfor %}
 	</div>
 
-{% endblock content %}
+{% endblock content %} {% endcomment %}
+
+{% comment %} guest page {% endcomment %}
+
+	<p align="right">
+	<input type="button" value="Apply to be OU" data-toggle="modal" data-target="#exampleModal"/> </p>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Apply to be OU</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			<form action="/">
+				<label for="fname">First name:</label>
+				<input type="text" id="fname" name="fname"><br><br>
+				<label for="lname">Last name:</label>
+				<input type="text" id="lname" name="lname"><br><br>
+				<label for="email">Email:</label>
+				<input type="text" id="email" name="email"><br><br>
+				
+			  </form>
+			  <input type="radio" value="none" id="buyer" name="ou" required/>
+                <label for="buyer" class="radio">Buyer</label>
+                <input type="radio" value="none" id="seller" name="ou" required/>
+                <label for="buyer" class="radio">Buyer</label>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+	 <div class="row">
+		{% for product in products %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{product.imageURL}}">
+			<div class="box-element product">
+				<h6><strong>{{product.name}}</strong></h6>
+				<hr>
+				<button class="btn btn-outline-success" input type="button" button onclick="myFunction()" >Report Item</button> 
+
+				<h4 style="display: inline-block; float: right"><strong>${{product.price}}</strong></h4>
+
+			</div>
+		</div>
+		{% endfor %}
+	</div> 
+
+<script>
+function myFunction() {
+  alert("This item has been reported!");
+}
+</script>
+{% endblock content %} 
