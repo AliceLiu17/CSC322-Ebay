@@ -197,3 +197,8 @@ def adminProfile(request):
 # 	products = Product.objects.all()
 # 	context = {'products':products, 'cartItems':cartItems}
 # 	return render(request, 'store/store-buyer.html', context)
+
+
+def bid_items(request):
+	if request.method == "GET":
+		return render (request, 'store/bid_items.html')

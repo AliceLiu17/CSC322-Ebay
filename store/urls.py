@@ -18,9 +18,11 @@ urlpatterns = [
  	path('buyer_profile/', views.buyerProfile, name="buyer_profile"),
 	path('seller_profile/', views.sellerProfile, name="seller_profile"),
 	path('admin_profile/', views.adminProfile, name="admin_profile"),
-	path('seller_profile/complaints', views.complaints, name='complaints_page')
+	path('seller_profile/complaints', views.complaints, name='complaints_page'),
 	# path('seller-home/', views.sellerHome, name="seller-home"),
  	# path('admin-home/', views.adminHome, name="admin-home"),
+  
+  	path('bid_items/', views.bid_items, name='bid_items_page'),
 
  
 
