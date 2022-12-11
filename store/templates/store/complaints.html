@@ -1,0 +1,66 @@
+<!-- complaints page for any user-->
+{% load static %}
+<html>
+	<head>
+		<title> Complaint Page</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+		<link rel = "stylesheet" href = "style.css">
+    </style>
+</head> 
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'store' %}">Buy OnDemand</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>	
+        </div>
+    </nav>
+</body>
+
+<div class = "name" style = "text-align:left; position:relative; left:80px; bottom:-75px ">
+    <meta charset="UTF-8">
+        <h1> <strong> Complaint Form </strong> </h1>
+        <hr style= "width:22%;text-align:left;margin-left:10px"> 
+        <p>
+            &#128681; Please fill out the below form with as much details of the issue!
+        </p>
+</div>
+
+    <div class = "user details" style = "text-align:center; position:relative; right:165px; bottom:-120px ">
+            <h2> <font size= "+2.2"> Name: </font> </h2>
+            <input type="text" id="Name" name="Name" style= "text-align:center; position:relative; left:360px; bottom:34px" placeholder= "Your Name">
+
+            <h2> <font size= "+2.2"> Email Address: </font> </h2>
+            <input type="text" id="Email Address" name="Email Address" style= "text-align:center; position:relative; left:360px; bottom:34px" placeholder= "Email Address">
+
+  
+        
+        <div class = "complaints detail" style = "text-align:center; position:relative; right:-34px; bottom:40px">
+            <textarea id="complaint details" style= "position:relative; left:175px; bottom:-50px" name="complaints" rows="13" cols="68"> </textarea>
+        </div>
+        <form>
+            <div>
+                <input type="submit" style="position:relative; right:20px; bottom: -23px" value="Submit Complaint"/>
+                </div>
+        </form>
+</div>
+
+
+    <!--<label for="freeform">Tell us how you heard about HubSpot:</label>
+<br>
+
+<textarea id="freeform" name="freeform" rows="4" cols="50">
+Enter text here...
+</textarea>
+    

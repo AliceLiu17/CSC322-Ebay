@@ -1,8 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import json
 import datetime
 from .models import * 
+
+from .models import * 
+from .forms import OrderForm, CreateUserForm
+
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+#from .filters import OrderFilter
 
 def store(request):
 
@@ -115,4 +122,78 @@ def processOrder(request):
 
 
 
+def loginPage(request):
 
+	if request.method == 'POST':
+		username = request.POST.get('username')
+		password = request.POST.get('password')
+
+		# the user can login as long as we approve them as a "customer"
+		user = authenticate(request, username=username, password=password)
+		if user is not None:
+			login(request, user)
+			#return redirect('store')
+			if user.username == 'buyer1':
+				return redirect('http://127.0.0.1:8000/buyer_profile/') # CHANGE TO PATH TO BUYER ACCOUNT, i just have holders to make sure it works
+			elif user.username == 'seller1':
+				return redirect('http://127.0.0.1:8000/seller_profile/')	# CHANGE TO PATH OF SELLER ACCOUNT
+			elif user.username == 'admin1':
+				return redirect('http://127.0.0.1:8000/admin_profile/') # for admins page 
+		else:
+			messages.info(request, 'username or password is incorrect')
+		
+
+	context = {}
+	return render(request, 'store/login.html', context)
+
+def logoutUser(request):
+	logout(request)
+	return redirect('main')
+
+def registerPage(request):
+	form = CreateUserForm()
+	if request.method == "POST":
+		form = CreateUserForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			user = form.cleaned_data.get('username')
+			messages.success(request, 'account was created for ' + user)
+			return redirect('login')
+	context = {'form':form}
+	return render(request, 'store/register.html', context)
+
+
+def complaints(request):
+	if request.method == "GET":
+		return render (request, 'store/complaints.html')
+
+
+def buyerProfile(request):
+	if request.method == "GET":
+		return render (request, 'store/buyer_profile.html')
+
+def sellerProfile(request):
+	if request.method == "GET":
+		return render (request, 'store/seller_profile.html')
+
+def adminProfile(request):
+ 	if request.method == "GET":
+ 		return render (request, 'store/admin_profile.html')
+
+
+# def storeBuyer(request):
+
+# 	if request.user.is_authenticated:
+# 		customer = request.user.customer
+# 		order, created = Order.objects.get_or_create(customer=customer, complete=False)
+# 		items = order.orderitem_set.all()
+# 		cartItems = order.get_cart_items
+# 	else:
+# 		#Create empty cart for now for non-logged in user
+# 		items = []
+# 		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+# 		cartItems = order['get_cart_items']
+
+# 	products = Product.objects.all()
+# 	context = {'products':products, 'cartItems':cartItems}
+# 	return render(request, 'store/store-buyer.html', context)
