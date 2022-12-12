@@ -57,6 +57,12 @@
 				<ul class="navbar-nav mr-auto">
 				  <li class="nav-item active">
 					<a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>	
+					<!-- SELLER LOGOUT-->
+				</ul>
+				<div class="form-inline my-2 my-lg-0">
+				<a href="{% url 'logout' %}"class="btn btn-warning">Logout</a>
+			</div>
+					
 			</div>
 		</nav>
 		<div class = "seller_account_info_container">
@@ -75,8 +81,7 @@
 
 
 					
-					
-					<p style="color: blue;"> Personal Information </p>
+					<a class="nav-link" href="change_password" style="position:relative; left:-15px" > Personal Information</a>
 					<p style="color: blue"> Biddings </p>
 					<p style="color: blue"> Items Sold </p>
 					<p style="color: blue"> View Transaction Statistics </p>

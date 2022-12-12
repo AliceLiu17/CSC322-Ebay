@@ -101,6 +101,11 @@
 				<ul class="navbar-nav mr-auto">
 				  <li class="nav-item active">
 					<a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>	
+					<!-- BUYER LOGOUT-->
+				</ul>
+					<div class="form-inline my-2 my-lg-0">
+					<a href="{% url 'logout' %}"class="btn btn-warning">Logout</a>
+				</div>
 			</div>
 		</nav>
 		<div class = "buyer_account_info_container">
@@ -112,9 +117,11 @@
 				</div>
 	
 				<div class = "image_report_container_child" style = "background-color: #D8E9F2; width: 260px;">
-					<p style = "color: blue;"> <strong> <u> Report a Seller </u> </strong> </p>
-					<p style="color: blue;"> Personal Information </p>
-					<p style="color: blue"> Biddings </p>
+
+					<a class="nav-link" href="complaints" style="position:relative; left:-15px" > Report Buyer</a>
+					<a class="nav-link" href="change_password" style="position:relative; left:-15px" > Personal Information</a>
+					
+					<p style="color: blue; position:relative; left:1px"> Biddings </p>
 				</div>
 			</div>
 			<div class = "order_history_card">

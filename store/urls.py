@@ -1,6 +1,6 @@
 from django.urls import path
-
 from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	#Leave as empty string for base url
@@ -18,9 +18,14 @@ urlpatterns = [
  	path('buyer_profile/', views.buyerProfile, name="buyer_profile"),
 	path('seller_profile/', views.sellerProfile, name="seller_profile"),
 	path('admin_profile/', views.adminProfile, name="admin_profile"),
-	path('seller_profile/complaints', views.complaints, name='complaints_page')
+	path('seller_profile/complaints', views.complaints, name='complaints_page'),
+	path('buyer_profile/complaints', views.complaints, name='complaints_page'),
 	# path('seller-home/', views.sellerHome, name="seller-home"),
  	# path('admin-home/', views.adminHome, name="admin-home"),
+
+	path('seller_profile/change_password', views.PasswordChangeView.as_view(template_name = 'store/change_password.html'), name='change_password'),
+	path('buyer_profile/change_password', views.PasswordChangeView.as_view(template_name = 'store/change_password.html'), name='change_password'),
+	#path('^change-password/$', auth_views.password_change, {'post_change_redirect': 'next_page'}, name='password_change'),
 
  
 

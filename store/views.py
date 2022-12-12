@@ -10,6 +10,9 @@ from .forms import OrderForm, CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 #from .filters import OrderFilter
+from django.contrib.auth.views import PasswordChangeView
+from store.forms import MyPasswordChangeForm
+
 
 def store(request):
 
@@ -139,6 +142,8 @@ def loginPage(request):
 				return redirect('http://127.0.0.1:8000/seller_profile/')	# CHANGE TO PATH OF SELLER ACCOUNT
 			elif user.username == 'admin1':
 				return redirect('http://127.0.0.1:8000/admin_profile/') # for admins page 
+			elif user.username == 'buyerpractice':
+				return redirect('http://127.0.0.1:8000/seller_profile/')	# buyer practice, I meant seller
 		else:
 			messages.info(request, 'username or password is incorrect')
 		
@@ -180,7 +185,9 @@ def adminProfile(request):
  	if request.method == "GET":
  		return render (request, 'store/admin_profile.html')
 
-
+class PasswordChangeView(PasswordChangeView):
+    form_class = MyPasswordChangeForm
+    template_name = "store/change_password.html"
 # def storeBuyer(request):
 
 # 	if request.user.is_authenticated:
