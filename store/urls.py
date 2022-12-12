@@ -23,6 +23,8 @@ urlpatterns = [
 	# path('seller-home/', views.sellerHome, name="seller-home"),
  	# path('admin-home/', views.adminHome, name="admin-home"),
 
+	path('search/', views.search, name="search"),
+
 	path('seller_profile/change_password', views.PasswordChangeView.as_view(template_name = 'store/change_password.html'), name='change_password'),
 	path('buyer_profile/change_password', views.PasswordChangeView.as_view(template_name = 'store/change_password.html'), name='change_password'),
 	#path('^change-password/$', auth_views.password_change, {'post_change_redirect': 'next_page'}, name='password_change'),

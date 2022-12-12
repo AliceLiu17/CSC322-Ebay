@@ -4,7 +4,7 @@ import json
 import datetime
 from .models import * 
 
-from .models import * 
+from .models import Product #added
 from .forms import OrderForm, CreateUserForm
 
 from django.contrib import messages
@@ -185,9 +185,17 @@ def adminProfile(request):
  	if request.method == "GET":
  		return render (request, 'store/admin_profile.html')
 
+def search(request):
+	prod = request.GET['prod']
+	products = Product.objects.filter(name__icontains=prod).order_by('-id') | Product.objects.filter(price__icontains=prod).order_by('-id') 
+	return render(request, 'store/search.html', {'products':products})
+
+
 class PasswordChangeView(PasswordChangeView):
     form_class = MyPasswordChangeForm
     template_name = "store/change_password.html"
+
+
 # def storeBuyer(request):
 
 # 	if request.user.is_authenticated:
