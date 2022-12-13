@@ -227,3 +227,7 @@ def search(request):
 class PasswordChangeView(PasswordChangeView):
     form_class = MyPasswordChangeForm
     template_name = "store/change_password.html"
+
+class PasswordChangeView(PasswordChangeView):
+    form_class = MyPasswordChangeForm
+    template_name = "store/change_password2.html"
