@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+ {% load static %}
+ <html>
+	<head>
+		<title> Bidding History </title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+		<link href = "C:/fontawesome-free-5.13.0-web/css/all.css" rel = "stylesheet">
+
+        <style>
+            .items_sold_container {
+				width: 1190px;
+				margin-top: 20px;
+				margin-bottom: 10px;
+				margin-left: 120px;
+				background: #D8E9F2;
+				display: inline-block; 
+				justify-content: center; 
+				position: relative;
+				flex-direction: column;
+				padding: 10px;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				border-radius: 5px;
+			}
+
+        </style>
+
+    </head>
+
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="{% url 'store' %}">Buy OnDemand</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+				  <li class="nav-item active">
+					<a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>	
+				  </ul>
+					<div class="form-inline my-2 my-lg-0">
+					<a href="{% url 'logout' %}"class="btn btn-warning">Logout</a>
+				</div>
+			</div>
+		</nav>
+
+        <h3 style = "text-align: center; font-weight: bold; font-size: xx-large; margin-top: 50px;"> Items Sold </h3>
+
+        <div class = "items_sold_container">
+            <div class = "bidding_history_card">
+                <img src = "https://m.media-amazon.com/images/I/71MVAWZYjVL.jpg" alt = "waffle_img" height = "250px" width = "250px" style = "margin-left: 20px; margin-right: 20px; float: left;">
+                <p style = "font-size: 20px;"> <strong> DASH Mini Maker for Individual Waffles, Hash Browns, Keto Chaffles with Easy to Clean, Non-Stick Surfaces, 4 Inch, Aqua, Product Dimensions 5"D x 6.4"W x 2.8"H </strong></p>
+                <p style = "margin-top: 30px; font-size: 17px;"> <strong> Current Listed Price: </strong> $14.21 </p>
+                <p style = "margin-top: 20px; font-size: 17px;"> <strong> Quantity Sold: </strong> 135 </p>
+                <p style = "margin-top: 20px; font-size: 17px;"> <strong> Money Made: </strong> $1,918.35 </p>
+                <p style = "margin-top: 20px; font-size: 17px;"> <strong> Average Rating: </strong> 4.5/5 </p>
+            </div>
+        </div>
+
+
+        <div class = "items_sold_container">
+            <div class = "bidding_history_card">
+                <img src = "https://m.media-amazon.com/images/I/71ayG3bZ7yL.jpg" alt = "waffle_img" height = "250px" width = "250px" style = "margin-left: 20px; margin-right: 20px; float: left;">
+                <p style = "font-size: 20px;"> <strong> Ecolution Patented Micro-Pop Microwave Popcorn Popper with Temperature Safe Glass, 3-in-1 Lid Measures Kernels and Melts Butter, Made Without BPA</strong></p>
+                <p style = "margin-top: 30px; font-size: 17px;"> <strong> Current Listed Price: </strong> $15.99 </p>
+                <p style = "margin-top: 20px; font-size: 17px;"> <strong> Quantity Sold: </strong> 29 </p>
+                <p style = "margin-top: 20px; font-size: 17px;"> <strong> Money Made: </strong> $463.71 </p>
+                <p style = "margin-top: 20px; font-size: 17px;"> <strong> Average Rating: </strong> 3.4/5 </p>
+            </div>
+        </div>
+
+    </body>
+
+
+</html>
