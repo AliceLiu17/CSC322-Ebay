@@ -29,7 +29,8 @@ urlpatterns = [
 
 	path('seller_profile/change_password', views.PasswordChangeView.as_view(template_name = 'store/change_password.html'), name='change_password'),
 	path('buyer_profile/change_password', views.PasswordChangeView.as_view(template_name = 'store/change_password.html'), name='change_password'),
-
+	path('buyer_profile/bid_history', views.bidHistory, name = "bid_history"),
+	path('seller_profile/items_sold', views.itemsSold, name = "items_sold")
  
 
 ]

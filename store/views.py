@@ -183,6 +183,15 @@ def adminProfile(request):
  	if request.method == "GET":
  		return render (request, 'store/admin_profile.html')
 
+def bidHistory(request):
+ 	if request.method == "GET":
+ 		return render (request, 'store/bid_history.html')
+
+
+def itemsSold(request):
+	if request.method == "GET":
+		return render (request, 'store/items_sold.html')
+
 
 # def storeBuyer(request):
 
