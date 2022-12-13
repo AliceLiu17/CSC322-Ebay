@@ -10,6 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+		<link href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel = "stylesheet">
 		<style>
 			.welcome_text_buyer {
 				margin-top: 20px;
@@ -88,6 +89,30 @@
 			.btn-primary {
 				margin-left: 50px;
 			}
+
+			.rating {
+				position: absolute;
+				transform: translate(-50%, -50%);
+				display: flex; 
+			}
+
+			.rating input {
+				
+			}
+
+			.rating label {
+				display: block;
+				cursor: pointer;
+				width: 50px;
+				background: #ccc; 
+			}
+
+			.rating label:before {
+				content: '\f005';
+				font-family:
+			}
+
+
 		</style>
 	</head>
 
@@ -101,6 +126,10 @@
 				<ul class="navbar-nav mr-auto">
 				  <li class="nav-item active">
 					<a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>	
+				  </ul>
+					<div class="form-inline my-2 my-lg-0">
+					<a href="{% url 'logout' %}"class="btn btn-warning">Logout</a>
+				</div>
 			</div>
 		</nav>
 		<div class = "buyer_account_info_container">
@@ -112,8 +141,8 @@
 				</div>
 	
 				<div class = "image_report_container_child" style = "background-color: #D8E9F2; width: 260px;">
-					<p style = "color: blue;"> <strong> <u> Report a Seller </u> </strong> </p>
-					<p style="color: blue;"> Personal Information </p>
+					<a class="nav-link" href="complaints" style="position:relative; left:-15px" > Report Seller</a>
+					<a class="nav-link" href="change_password" style="position:relative; left:-15px" > Personal Information</a>
 					<p style="color: blue"> Biddings </p>
 				</div>
 			</div>
@@ -121,6 +150,16 @@
 				<h3 id = "card_title"> <u> Order History</u></h3>
 				<div class = "date_plus_rate">
 					<p id = "order_date"> 12-09-2022 </p> 
+					<div class = "star_rating"> 
+						<input type = "radio" name = "star" id = "star1"> <label for = "star1"> </label>
+						<input type = "radio" name = "star" id = "star2"> <label for = "star2"> </label>
+						<input type = "radio" name = "star" id = "star3"> <label for = "star3"> </label>
+						<input type = "radio" name = "star" id = "star4"> <label for = "star4"> </label>
+						<input type = "radio" name = "star" id = "star5"> <label for = "star5"> </label>
+
+
+					</div>
+
 					<div class="d-grid gap-2 d-md-block">
 						<button class="btn btn-primary" type="button">Rate</button>
 					</div>

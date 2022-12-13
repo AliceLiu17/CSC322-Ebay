@@ -4,12 +4,15 @@ import json
 import datetime
 from .models import * 
 
-from .models import * 
+from .models import Product
 from .forms import OrderForm, CreateUserForm
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 #from .filters import OrderFilter
+from django.contrib.auth.views import PasswordChangeView
+from store.forms import MyPasswordChangeForm
+
 
 def store(request):
 
@@ -202,3 +205,16 @@ def adminProfile(request):
 def bid_items(request):
 	if request.method == "GET":
 		return render (request, 'store/bid_items.html')
+
+def logoutUser(request):
+	logout(request)
+	return redirect('main')
+
+def search(request):
+	prod = request.GET['prod']
+	products = Product.objects.filter(name__icontains=prod).order_by('-id') | Product.objects.filter(price__icontains=prod).order_by('-id') 
+	return render(request, 'store/search.html', {'products':products})
+
+class PasswordChangeView(PasswordChangeView):
+    form_class = MyPasswordChangeForm
+    template_name = "store/change_password.html"
