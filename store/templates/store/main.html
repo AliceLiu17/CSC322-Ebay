@@ -47,8 +47,8 @@
 	        <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
             
 	      </li>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0 "action="/search">
+            <input class="form-control mr-sm-2" type="text" name= "prod" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form> 
 	    </ul>
@@ -88,5 +88,6 @@
 	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 	<br>
 	<p style="text-align:center;"> <a href="complaints" style="text-align:center"> MAKE A COMPLAINT </a></p> </br>
+	
 </body>
 </html>

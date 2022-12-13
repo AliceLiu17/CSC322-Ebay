@@ -202,3 +202,8 @@ def adminProfile(request):
 def bid_items(request):
 	if request.method == "GET":
 		return render (request, 'store/bid_items.html')
+
+
+def ou(request):
+	if request.method == "GET":
+		return render (request, 'store/ou.html')

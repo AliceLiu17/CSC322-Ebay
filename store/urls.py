@@ -23,6 +23,7 @@ urlpatterns = [
  	# path('admin-home/', views.adminHome, name="admin-home"),
   
   	path('bid_items/', views.bid_items, name='bid_items_page'),
+    path('ou/', views.ou, name='ou'),
 
  
 
